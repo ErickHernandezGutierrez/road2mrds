@@ -37,8 +37,8 @@ def plot_Y(l, m):
 
     plt.show()
 
-theta = np.linspace(0, np.pi, 50)
-phi   = np.linspace(0, 2*np.pi, 50)
+theta = np.linspace(0, np.pi, 100)
+phi   = np.linspace(0, 2*np.pi, 100)
 theta, phi = np.meshgrid(theta, phi)
 x,y,z = np.sin(theta)*np.sin(phi), np.sin(theta)*np.cos(phi), np.cos(theta)
 
