@@ -68,10 +68,9 @@ def getSkewSymmetricMatrixFromVector(v):
         [-v[1],  v[0],  0]
     ])
 
-def getRotationFromDir(a, dir):
-    #a = (0,1,0)
-    v = np.cross(a, dir)
-    c = np.dot(a, dir)
+def getRotationFromDir(axis, dir):
+    v = np.cross(axis, dir)
+    c = np.dot(axis, dir)
 
     V = getSkewSymmetricMatrixFromVector(v)
 
