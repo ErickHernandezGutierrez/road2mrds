@@ -42,22 +42,25 @@ def load_dirs(dirs_filename, ndirs=500):
     directions = np.fromfile(dirs_filename, dtype=np.float64)
     return np.reshape(directions, (ndirs,3))
 
+# theta -> azimuthal [0, 2pi]
+# phi   -> elevation [0,  pi]
 def cart2sph(x, y, z):
     h = np.hypot(x, y)
     r = np.hypot(h, z)
-    theta = np.arctan2(h, z)
-    if x>0:
-        phi = np.arctan2(y, x)
+    phi = np.arctan2(h, z)
+    theta = np.arctan2(y, x)
+    """if x>0:
+        theta = np.arctan2(y, x)
     elif x<0 and y>=0:
-        phi = np.arctan2(y, x)+np.pi
+        theta = np.arctan2(y, x)+np.pi
     elif x<0 and y<0:
-        phi = np.arctan2(y, x)-np.pi
+        theta = np.arctan2(y, x)-np.pi
     elif np.abs(x<1e-6) and y>0:
-        phi = np.pi/2
+        theta = np.pi/2
     elif np.abs(x<1e-6) and y<0:
-        phi = -np.pi/2
+        theta = -np.pi/2
     else:
-        phi=0#np.inf
+        theta=0"""#np.inf
     
     return np.array( [theta, phi, r] )
 
