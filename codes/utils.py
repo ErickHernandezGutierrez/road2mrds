@@ -22,7 +22,7 @@ def load_scheme(scheme_filename, bval=None):
         x,y,z,b = float(x),float(y),float(z),float(b)
         bvecs.append( np.array([x,y,z]) )
         bvals.append( b )
-        if bval!=None and np.abs(bval-b) < 1e-6:
+        if bval!=None and np.abs(bval-b) < 1e-1:
             idx.append(i)
 
     return np.array(bvecs), np.array(bvals), np.array(idx)
@@ -76,3 +76,12 @@ def getRotationFromDir(a, dir):
     V = getSkewSymmetricMatrixFromVector(v)
 
     return np.identity(3) + V + V@V * (1/(1+c))
+
+def print_matrix(matrix):
+    n,m = matrix.shape
+    for i in range(n):
+        print('|',end=' ')
+        for j in range(m):
+            print('%.6lf\t' % matrix[i,j], end='')
+        print(' |',end='\n')
+
